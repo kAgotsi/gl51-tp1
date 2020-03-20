@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: gl51.tp1
+---
+testFramework: junit
+sourceLanguage: java
