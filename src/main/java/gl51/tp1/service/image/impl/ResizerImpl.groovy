@@ -5,12 +5,14 @@ import gl51.tp1.service.image.ImageService
 import gl51.tp1.service.image.ResizerService
 
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * This class implements @see gl51.tp1.service.Resizer
  * @author Gédéon AGOTSI
  * @version 1.0
  */
+@Singleton
 class ResizerImpl implements ResizerService{
     @Inject
     ImageService service

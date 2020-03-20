@@ -5,7 +5,9 @@ import gl51.tp1.service.image.ImageService
 import gl51.tp1.service.image.UploadImageService
 
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class UploadImageImpl implements UploadImageService{
 
     @Inject
