@@ -13,7 +13,8 @@ interface ResizerService {
      * resize image according to the new x,y
      * @param x  of image
      * @param y  of image
+     * @param image image
      * @return resized image
      */
-    Image resize(int x, int y);
+    Image resize(Image image, int x, int y);
 }

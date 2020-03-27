@@ -12,12 +12,9 @@ import javax.inject.Inject
  * @version 1.0
  */
 class ResizerImpl implements ResizerService{
-    @Inject
-    ImageService service
 
     @Override
-    Image resize(int x, int y) {
-        Image image = service.fetch()
+    Image resize(Image image,int x, int y) {
         image.setX(x)
         image.setY(y)
         return image
