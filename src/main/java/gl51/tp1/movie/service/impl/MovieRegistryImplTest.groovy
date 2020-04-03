@@ -2,36 +2,43 @@ package gl51.tp1.movie.service.impl
 
 import gl51.tp1.movie.data.Movie
 import gl51.tp1.movie.service.MovieClient
+import io.micronaut.test.annotation.MockBean
 import spock.lang.Specification
 
 import javax.inject.Inject
 import io.micronaut.test.annotation.MicronautTest
 
 /**
- * Test classs with Mock
  */
 @MicronautTest
 class MovieClientImplTest extends Specification {
 
     @Inject
-    MovieClient movieClientMock = Mock()
-
-    @Inject
     MovieRegistryImpl registry
 
-    void "Injection should work"() {
+    void "injection should work"() {
         expect:
-        movieClientMock != null
         registry != null
     }
 
-    void "Getting a movie by it's imdb ID should work"() {
-        when:
-        movieClientMock.getMovieDetail("jam")
+    void "favorites should be empty"() {
+        expect:
+        registry.listFavorites() == []
+    }
 
+    void "adding a favorite should fill in the database"() {
+        when:
+        registry.addMovieToFavorites("aaaaa")
         then:
-        Movie movie = new Movie(imdbId: "jam")
-        registry.addMovieToFavorites(movie.imdbId)
         registry.listFavorites().size() == 1
+        registry.listFavorites().find { it.title == 'my movie'}
+    }
+
+
+    @MockBean(MovieClientImplTest)
+    MovieClient movieClient() {
+        def mock = Mock(MovieClient)
+        mock.getMovieDetail("aaaaa") >> new Movie(imdbID: "aaaaa", title: 'my movie')
+        mock
     }
 }
