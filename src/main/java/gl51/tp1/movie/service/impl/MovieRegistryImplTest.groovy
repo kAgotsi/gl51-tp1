@@ -1,28 +1,35 @@
 package gl51.tp1.movie.service.impl
 
+import gl51.tp1.movie.data.Movie
+import gl51.tp1.movie.service.MovieClient
 import spock.lang.Specification
 
 import javax.inject.Inject
+import io.micronaut.test.annotation.MicronautTest
 
-class MovieRegistryImplTest extends Specification {
+
+@MicronautTest
+class MovieClientImplTest extends Specification {
+
+    @Inject
+    MovieClient movieClientMock = Mock()
 
     @Inject
     MovieRegistryImpl registry
 
-    void "injection should work"() {
+    void "Injection should work"() {
         expect:
+        movieClientMock != null
         registry != null
     }
 
-    void "favorites should be empty"() {
-        expect:
-        registry.listFavorites() == []
-    }
-
-    void "adding a facovite should fill in the database"() {
+    void "Getting a movie by it's imdb ID should work"() {
         when:
-        registry.addMovieToFavorites("aaaaa")
+        movieClientMock.getMovieDetail("jam")
+
         then:
+        Movie movie = new Movie(imdbId: "jam")
+        registry.addMovieToFavorites(movie.imdbId)
         registry.listFavorites().size() == 1
     }
 }
