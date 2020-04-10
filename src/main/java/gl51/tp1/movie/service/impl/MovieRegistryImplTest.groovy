@@ -35,7 +35,7 @@ class MovieClientImplTest extends Specification {
     }
 
 
-    @MockBean(MovieClientImplTest)
+    @MockBean(MovieClient)
     MovieClient movieClient() {
         def mock = Mock(MovieClient)
         mock.getMovieDetail("aaaaa") >> new Movie(imdbID: "aaaaa", title: 'my movie')
