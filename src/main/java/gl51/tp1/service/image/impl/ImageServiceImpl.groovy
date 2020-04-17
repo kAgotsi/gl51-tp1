@@ -2,7 +2,6 @@ package gl51.tp1.service.image.impl;
 
 import gl51.tp1.data.Image;
 import gl51.tp1.service.image.ImageService;
-import groovy.lang.Singleton;
 
 /**
  * This class implements @see gl51.tp1.service.picture.ImageService
