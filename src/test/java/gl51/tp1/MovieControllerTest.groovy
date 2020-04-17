@@ -21,7 +21,7 @@ import spock.lang.Specification
 import javax.inject.Inject
 
 @MicronautTest
-class MovieControllerSpec extends Specification {
+class MovieControllerTest extends Specification {
 
     @Shared @Inject
     EmbeddedServer embeddedServer
