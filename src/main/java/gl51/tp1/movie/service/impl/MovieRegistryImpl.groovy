@@ -12,10 +12,6 @@ class MovieRegistryImpl implements MovieRegistry {
 
     private List<Movie> internalRegistry = []
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
     @Inject
     private MovieClient movieClient
 
